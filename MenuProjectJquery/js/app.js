@@ -1,48 +1,37 @@
 
 let foodItems = require('./array')
 
-// let showLunchItems = require('./DOM')
-
 window.addEventListener('load', function () {
-    let nav_list = document.querySelector('#show-list');
-    let nav_add = document.querySelector('#show-add');
-
-    let view_list = document.querySelector('#list-view');
-    let view_add = document.querySelector('#add-view');
 
     let search_box = document.querySelector('#search');
 
-    nav_list.addEventListener('click', function () {
-        view_list.classList.remove('hidden')
-        view_add.classList.add('hidden')
-        console.log('YAS')
-    });
+    $('#tabs').tabs();
 
-    nav_add.addEventListener('click', function () {
-        view_list.classList.add('hidden');
-        view_add.classList.remove('hidden');
-        console.log('YAS AGAIN')
-    });
-
-    search_box.addEventListener('keyup', function() {
+    search_box.addEventListener('keyup', function () {
         let keepers = [];
         console.log(search_box.value);
 
         for (let i = 0; i < foodItems.length; i++) {
             let food_name = foodItems[i].food.toLowerCase();
             let search_term = search_box.value.toLowerCase();
+            //let food_tag = foodItems[i].tags.toLowerCase();
 
-            if (food_name.includes(search_term)) {
+            if (food_name.includes(search_term) || foodItems[i].tags.includes(search_term)) {
                 keepers.push(foodItems[i]);
             }
         }
-        showFoods(keepers);
+        showFoods(keepers, '#menu');
     });
-    showFoods(foodItems);
+    showFoods(foodItems, '#menu');
+    showFoods(foodItems.filter(function (food) {
+        if (food.tags.includes(' veggie')) {
+            return true;
+        }
+    }), '#vegetarian');
 });
 
-function showFoods(foods) {
-    let parent = document.querySelector('#menu');
+function showFoods(foods, selector) {
+    let parent = document.querySelector(selector);
     parent.innerHTML = '';
 
     for (let i = 0; i < foods.length; i++) {

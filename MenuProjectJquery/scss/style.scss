@@ -17,6 +17,13 @@ button {
     border-radius:5px;
     padding:1%;
 }
+nav {
+
+    #nav {
+        display:flex;
+    }
+}
+
 
 ul {
     list-style:none;
@@ -25,6 +32,23 @@ ul {
     li {
         border:2px solid white;
         border-radius:5px;
+        padding: 1%;
+        max-width:50%;
+        margin:0 auto;
+
+    }
+}
+
+a {
+    text-decoration:none;
+    color:black;
+}
+
+ a:hover {
+        color:purple;
     }
 
-}
+// #add-view {
+//     display:flex;
+//     justify-content:space-between;
+// }
