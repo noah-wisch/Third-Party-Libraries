@@ -1,0 +1,30 @@
+@import '../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-grid;
+
+body {
+    background-color:#f66733;
+    text-align:center;
+}
+
+.hidden {
+    display:none;
+}
+
+button {
+    background-color:#FFF;
+    border-radius:5px;
+    padding:1%;
+}
+
+ul {
+    list-style:none;
+    padding:0px;
+
+    li {
+        border:2px solid white;
+        border-radius:5px;
+    }
+
+}
